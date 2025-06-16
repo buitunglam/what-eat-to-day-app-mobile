@@ -19,9 +19,6 @@ class _CardSaveRecipeItemState extends State<CardSaveRecipeItem> {
         height: 200,
         child: GestureDetector(
           onTap: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(builder: (context) => const ReceipeDetailPage()),
-            // );
             Navigator.of(context).pushNamed('/detail');
           },
           child: Card(

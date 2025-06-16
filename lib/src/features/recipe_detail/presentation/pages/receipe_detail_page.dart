@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:whattoeattoday/src/core/styles/app_colors.dart';
 import 'package:whattoeattoday/src/features/recipe_detail/data/data_sources/sample_recipe_detail.dart';
 import 'package:whattoeattoday/src/features/recipe_detail/presentation/widgets/card_top_recipe_detail.dart';
+import 'package:whattoeattoday/src/features/recipe_detail/presentation/widgets/content_ingredient_tab.dart';
+import 'package:whattoeattoday/src/features/recipe_detail/presentation/widgets/content_produce_tab.dart';
 import 'package:whattoeattoday/src/shared/presentation/widgets/header.dart';
 
 class ReceipeDetailPage extends StatefulWidget {
@@ -13,6 +15,13 @@ class ReceipeDetailPage extends StatefulWidget {
 
 class _ReceipeDetailState extends State<ReceipeDetailPage> {
   final recipeDetail = sampleReceipeDetail;
+  var isIngredientTab = true;
+
+  void _onTabSelected(bool isIngredient) {
+    setState(() {
+      isIngredientTab = isIngredient;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +56,7 @@ class _ReceipeDetailState extends State<ReceipeDetailPage> {
               ),
 
               SizedBox(height: 10),
+              // Author
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -92,7 +102,68 @@ class _ReceipeDetailState extends State<ReceipeDetailPage> {
                   ),
                 ],
               ),
+              /**Tab ingredient and produce*/
+              SizedBox(height: 30),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () => _onTabSelected(true),
+                      style: TextButton.styleFrom(
+                        backgroundColor:
+                            isIngredientTab
+                                ? AppColors.primaryColor
+                                : AppColors.white,
+                        foregroundColor:
+                            isIngredientTab
+                                ? AppColors.white
+                                : AppColors.primaryColor,
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: const Text("Ingredients"),
+                    ),
+                  ),
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () => _onTabSelected(false),
+                      style: TextButton.styleFrom(
+                        backgroundColor:
+                            isIngredientTab
+                                ? AppColors.white
+                                : AppColors.primaryColor,
+                        foregroundColor:
+                            isIngredientTab
+                                ? AppColors.primaryColor
+                                : AppColors.white,
+                        textStyle: const TextStyle(fontSize: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: const Text("Produce"),
+                    ),
+                  ),
+                ],
+              ),
+
+              /**End Tab ingredient and produce*/
+              /**Content Tab */
+              SizedBox(height: 20),
+              Expanded(
+                child:
+                    isIngredientTab
+                        ? const ContentIngredientTab()
+                        : const ContentProduceTab(),
+              ),
             ],
+
+            /**End author*/
           ),
         ),
       ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:whattoeattoday/src/core/styles/app_colors.dart';
-import 'package:whattoeattoday/src/features/search/presentation/pages/search_page.dart';
 
 class SearchBarRecipe extends StatefulWidget {
   const SearchBarRecipe({super.key});
@@ -19,11 +18,6 @@ class _SearchBarRecipeState extends State<SearchBarRecipe> {
             height: 45,
             child: GestureDetector(
               onTap: () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) => const SearchPage(),
-                //   ),
-                // );
                 Navigator.of(context).pushNamed('/search');
               },
               child: AbsorbPointer(
