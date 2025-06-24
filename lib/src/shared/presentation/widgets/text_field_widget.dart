@@ -37,7 +37,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: AppColors.gray4,
+                color: AppColors.colorD9D9D9,
                 width: 1,
               ), // Border before focus
             ),
@@ -49,7 +49,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                         _isPasswordVisible
                             ? Icons.visibility
                             : Icons.visibility_off,
-                        color: AppColors.gray4,
+                        color: AppColors.colorD9D9D9,
                       ),
                       onPressed: () {
                         setState(() {
@@ -58,10 +58,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       },
                     )
                     : null,
-            hintStyle: TextStyle(color: AppColors.gray4),
+            hintStyle: TextStyle(color: AppColors.colorD9D9D9),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: AppColors.gray4, width: 1),
+              borderSide: BorderSide(color: AppColors.colorD9D9D9, width: 1),
             ),
           ),
         ),

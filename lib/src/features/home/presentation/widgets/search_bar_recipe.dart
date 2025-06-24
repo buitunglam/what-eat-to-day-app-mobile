@@ -38,7 +38,7 @@ class _SearchBarRecipeState extends State<SearchBarRecipe> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColors.gray4, width: 1),
+                      borderSide: BorderSide(color: AppColors.colorD9D9D9, width: 1),
                     ),
                     prefixIcon: Padding(
                       padding: const EdgeInsets.all(10),

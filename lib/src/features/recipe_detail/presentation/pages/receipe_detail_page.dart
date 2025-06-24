@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:whattoeattoday/src/core/styles/app_colors.dart';
-import 'package:whattoeattoday/src/features/recipe_detail/data/data_sources/sample_recipe_detail.dart';
+import 'package:whattoeattoday/src/features/recipe_detail/data/data_sources/local/sample_recipe_detail.dart';
 import 'package:whattoeattoday/src/features/recipe_detail/presentation/widgets/card_top_recipe_detail.dart';
 import 'package:whattoeattoday/src/features/recipe_detail/presentation/widgets/content_ingredient_tab.dart';
+import 'package:whattoeattoday/src/features/recipe_detail/presentation/widgets/content_popover_recipe_detail.dart';
 import 'package:whattoeattoday/src/features/recipe_detail/presentation/widgets/content_produce_tab.dart';
+import 'package:whattoeattoday/src/features/recipe_detail/presentation/widgets/rate_dialog.dart';
+import 'package:whattoeattoday/src/features/recipe_detail/presentation/widgets/share_dialog.dart';
 import 'package:whattoeattoday/src/shared/presentation/widgets/header.dart';
+import 'package:whattoeattoday/src/shared/presentation/widgets/popover.dart';
 
 class ReceipeDetailPage extends StatefulWidget {
   const ReceipeDetailPage({super.key});
@@ -16,6 +20,7 @@ class ReceipeDetailPage extends StatefulWidget {
 class _ReceipeDetailState extends State<ReceipeDetailPage> {
   final recipeDetail = sampleReceipeDetail;
   var isIngredientTab = true;
+  var isOpen = false;
 
   void _onTabSelected(bool isIngredient) {
     setState(() {
@@ -25,13 +30,55 @@ class _ReceipeDetailState extends State<ReceipeDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey rightIconKey = GlobalKey();
+
     return SafeArea(
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
           child: Column(
             children: [
-              Header(haveTitle: false, haveBackIcon: true, haveRightIcon: true),
+              Header(
+                haveTitle: false,
+                haveBackIcon: true,
+                haveRightIcon: true,
+                rightIconKey: rightIconKey,
+                onBackPressed: () {
+                  Navigator.pop(context);
+                },
+                onRightIconPressed: () {
+                  Popover.show(
+                    context: context,
+                    targetKey: rightIconKey,
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ContentPopoverRecipeDetail(
+                          onClickToShare: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => const ShareDialog(),
+                            );
+                          },
+                          onClickToRate: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => const RateDialog(),
+                            );
+                          },
+                          onClickToReview: () {
+                            Popover.dismiss();
+                            Navigator.pushNamed(context, '/review');
+                          },
+                          onClickToSave: () {
+                            // Handle save action
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
               CardTopRecipeDetail(recipeDetail: recipeDetail),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,7 +199,6 @@ class _ReceipeDetailState extends State<ReceipeDetailPage> {
                 ],
               ),
 
-              /**End Tab ingredient and produce*/
               /**Content Tab */
               SizedBox(height: 20),
               Expanded(
@@ -162,8 +208,6 @@ class _ReceipeDetailState extends State<ReceipeDetailPage> {
                         : const ContentProduceTab(),
               ),
             ],
-
-            /**End author*/
           ),
         ),
       ),

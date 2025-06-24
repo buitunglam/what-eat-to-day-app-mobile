@@ -14,9 +14,9 @@ class _CardSaveRecipeItemState extends State<CardSaveRecipeItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: SizedBox(
-        height: 200,
+        height: 180,
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed('/detail');

@@ -12,7 +12,7 @@ class ItemIngredient extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.gray4,
+          color: AppColors.colorD9D9D9,
           borderRadius: BorderRadius.circular(13),
         ),
         child: Padding(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whattoeattoday/src/core/styles/app_colors.dart';
-import 'package:whattoeattoday/src/features/recipe_detail/data/data_sources/sample_recipe_detail.dart';
+import 'package:whattoeattoday/src/features/recipe_detail/data/data_sources/local/sample_recipe_detail.dart';
 import 'package:whattoeattoday/src/features/recipe_detail/presentation/widgets/ItemProceduce.dart';
 
 class ContentProduceTab extends StatelessWidget {

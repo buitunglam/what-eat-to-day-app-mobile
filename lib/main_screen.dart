@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whattoeattoday/src/core/router/home_tab_navigator.dart';
+import 'package:whattoeattoday/src/core/router/notification_tab_navigator.dart';
+import 'package:whattoeattoday/src/core/router/profile_tab_navigator.dart';
 import 'package:whattoeattoday/src/core/router/save_recipe_tab_navigator.dart';
 import 'package:whattoeattoday/src/core/styles/app_colors.dart';
 
@@ -23,6 +25,10 @@ class _MainScreenState extends State<MainScreen> {
     _screens = [
       HomeTabNavigator(showBottomBarNotifier: showBottomBarNotifier),
       SavedRecipeTabNavigator(showBottomBarNotifier: showBottomBarNotifier),
+      const SizedBox.shrink(), // Placeholder for the FAB position
+      const SizedBox.shrink(), // Placeholder for the FAB position
+      NotificationsTabNavigator(showBottomBarNotifier: showBottomBarNotifier),
+      ProfileTabNavigator(showBottomBarNotifier: showBottomBarNotifier),
     ];
   }
 
@@ -127,7 +133,7 @@ class _MainScreenState extends State<MainScreen> {
                               ),
                               BottomNavigationBarItem(
                                 icon: Image.asset(
-                                  _currentIndex == 2
+                                  _currentIndex == 4
                                       ? "assets/images/notification_active.png"
                                       : "assets/images/notification.png",
                                   width: 24,
@@ -137,7 +143,7 @@ class _MainScreenState extends State<MainScreen> {
                               ),
                               BottomNavigationBarItem(
                                 icon: Image.asset(
-                                  _currentIndex == 3
+                                  _currentIndex == 5
                                       ? "assets/images/profile_active.png"
                                       : "assets/images/profile.png",
                                   width: 24,

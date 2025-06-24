@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whattoeattoday/src/core/router/bottom_bar_visibility_observer.dart';
 import 'package:whattoeattoday/src/features/recipe_detail/presentation/pages/receipe_detail_page.dart';
+import 'package:whattoeattoday/src/features/review/presentation/pages/review.dart';
 import 'package:whattoeattoday/src/features/save_recipes/presentation/pages/save_recipes_page.dart';
 
 class SavedRecipeTabNavigator extends StatelessWidget {
@@ -17,7 +18,7 @@ class SavedRecipeTabNavigator extends StatelessWidget {
       observers: [
         BottomBarVisibilityObserver(
           showBottomBarNotifier,
-          {'/detail'}, // routes to hide bottom bar
+          {'/detail', '/review'}, // routes to hide bottom bar
         ),
       ],
       onGenerateRoute: (settings) {
@@ -26,6 +27,11 @@ class SavedRecipeTabNavigator extends StatelessWidget {
             return MaterialPageRoute(
               builder: (_) => ReceipeDetailPage(),
               settings: RouteSettings(name: '/detail'),
+            );
+          case '/review':
+            return MaterialPageRoute(
+              builder: (_) => Review(), // Assuming review is part of detail
+              settings: RouteSettings(name: '/review'),
             );
           case '/saved':
           default:

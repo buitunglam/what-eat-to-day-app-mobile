@@ -144,18 +144,18 @@ class _RegisterPageState extends State<RegisterPage> {
                 Container(
                   width: 80,
                   height: 1,
-                  decoration: BoxDecoration(color: AppColors.gray4),
+                  decoration: BoxDecoration(color: AppColors.colorD9D9D9),
                 ),
                 SizedBox(width: 10),
                 Text(
                   "Or Sign in with",
-                  style: TextStyle(color: AppColors.gray4),
+                  style: TextStyle(color: AppColors.colorD9D9D9),
                 ),
                 SizedBox(width: 10),
                 Container(
                   width: 80,
                   height: 1,
-                  decoration: BoxDecoration(color: AppColors.gray4),
+                  decoration: BoxDecoration(color: AppColors.colorD9D9D9),
                 ),
               ],
             ),

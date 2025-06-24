@@ -7,6 +7,8 @@ class Header extends StatelessWidget {
   final bool haveRightIcon;
   final Function? onBackPressed;
   final Function? onRightIconPressed;
+  final GlobalKey? rightIconKey;
+
   const Header({
     super.key,
     this.title = "",
@@ -15,6 +17,8 @@ class Header extends StatelessWidget {
     this.haveRightIcon = false,
     this.onBackPressed,
     this.onRightIconPressed,
+    this.rightIconKey,
+
   });
 
   @override
@@ -34,8 +38,8 @@ class Header extends StatelessWidget {
             },
             child: Image.asset(
               'assets/images/arrow-left.png',
-              width: 30,
-              height: 30,
+              width: 25,
+              height: 25,
             ),
           )
         else
@@ -49,12 +53,13 @@ class Header extends StatelessWidget {
           const SizedBox(width: 30, height: 30),
         if (haveRightIcon)
           GestureDetector(
+            key: rightIconKey,
             onTap: () {
               if (onRightIconPressed != null) {
                 onRightIconPressed!();
               }
             },
-            child: Image.asset('assets/images/more.png', width: 30, height: 30),
+            child: Image.asset('assets/images/more.png', width: 25, height: 25),
           )
         else
           const SizedBox(width: 30, height: 30),

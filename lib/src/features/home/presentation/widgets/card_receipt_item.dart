@@ -17,7 +17,7 @@ class _CardReceiptItemState extends State<CardReceiptItem> {
       width: 170,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: AppColors.gray4,
+        color: AppColors.colorD9D9D9,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
